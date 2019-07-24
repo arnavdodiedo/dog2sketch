@@ -9,7 +9,7 @@ class DataLoader():
 
     def load_data(self, domain, batch_size=1, is_testing=False):
         data_type = "train%s" % domain if not is_testing else "test%s" % domain
-        path = glob("C:\\Users\\ARKARMAR\\cyclegan\\datasets\\resized\\" % (self.dataset_name, data_type))
+        path = glob("D:\\codes\\python\\%s\\dataset\\%s\\*" % (self.dataset_name, data_type))
 
         batch_images = np.random.choice(path, size=batch_size)
 
@@ -30,9 +30,9 @@ class DataLoader():
         return imgs
 
     def load_batch(self, batch_size=1, is_testing=False):
-        data_type = "train" if not is_testing else "val"
-        path_A = glob('C:\\Users\\ARKARMAR\\cyclegan\\datasets\\resized\\%s\\%sA\\*' % (self.dataset_name, data_type))
-        path_B = glob('C:\\Users\\ARKARMAR\\cyclegan\\datasets\\resized\\%s\\%sA\\*' % (self.dataset_name, data_type))
+        data_type = "train" if not is_testing else "test"
+        path_A = glob('D:\\codes\\python\\%s\\dataset\\%sA\\*' % (self.dataset_name, data_type))
+        path_B = glob('D:\\codes\\python\\%s\\dataset\\%sB\\*' % (self.dataset_name, data_type))
 
         self.n_batches = int(min(len(path_A), len(path_B)) / batch_size)
         total_samples = self.n_batches * batch_size
